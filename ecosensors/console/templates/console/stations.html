@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>EcoSensors - Console Station</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ {% load static %}
+ <link rel="stylesheet" type="text/css" href="{% static 'console/style.css' %}">
+
+</head>
+<body>
+
+  <h1>Station for fieldid</h1>
+  {% if stations_list %}
+      <ul>
+      {% for station in stations_list %}
+          <!--<li><a href="/console/{{ field.id_field}}/">{{ field.field_name }}</a></li>-->
+          <li><a href="{% url 'console:station' station.id_station %}">{{ station.station_name}} ({{ station.station_longname }}; ID Field:{{ station.fields_id_field }})</a></li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No stations are available.</p>
+  {% endif %}
+
+</body>
+</html>
