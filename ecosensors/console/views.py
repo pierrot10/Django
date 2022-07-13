@@ -29,10 +29,12 @@ class StationsView(generic.ListView):
         """Return the last five published station."""
         return Stations.objects.order_by('-station_created')[:10]
 
-def stations(request, fields_id_field):
+def stations(request, id_field):
     #template = loader.get_template('console/stations.html')
     #try:
-    stations_list = get_object_or_404(Stations, pk=fields_id_field)
+    #stations_list = get_object_or_404(Stations, pk=field_id_field)
+    stations_list = Stations.objects.get(pk=5)
+
     #except(KeyError, Stations.DoesNotExist):
     #    return render(request, 'console/stations.html', {'stations_list': '1'})
     #response = "You're looking at the results of question %s."
