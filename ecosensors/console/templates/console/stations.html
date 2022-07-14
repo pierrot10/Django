@@ -14,8 +14,16 @@
   {% if stations_list %}
       <ul>
       {% for station in stations_list %}
-          <!--<li><a href="/console/{{ field.id_field}}/">{{ field.field_name }}</a></li>-->
-          <li><a href="{% url 'console:station' station.id_station %}">{{ station.station_name}} ({{ station.station_longname }}; ID Field:{{ station.fields_id_field }})</a></li>
+          <li>{{ station.station_name}} ({{ station.station_longname }}; ID Field:{{ station.fields_id_field }})
+            <ul>
+            {% for field in Fields %}
+              <li>field.field_name</li>
+            {% endfor %}
+            </ul>
+          </li>
+
+
+          <!--<li><a href="{% url 'console:station' station.id_station %}">{{ station.station_name}} ({{ station.station_longname }}; ID Field:{{ station.fields_id_field }})</a></li>-->
       {% endfor %}
       </ul>
   {% else %}
