@@ -15,19 +15,19 @@ class IndexView(generic.ListView):
         return Fields.objects.order_by('-field_created')[:5]
 
 
-class FieldsView(generic.DetailView):
-    model = Fields
-    template_name = 'console/fields.html'
+# class FieldsView(generic.DetailView):
+#    model = Fields
+#    template_name = 'console/fields.html'
 
 
-class StationsView(generic.ListView):
-    #model = Stations
-    context_object_name = 'stations_list'
-    template_name = 'console/stations.html'
-
-    def get_queryset(self):
-        """Return the last five published station."""
-        return Stations.objects.order_by('-station_created')[:10]
+# class StationsView(generic.ListView):
+#    model = Stations
+#    context_object_name = 'stations_list'
+#    template_name = 'console/stations.html'
+#
+#    def get_queryset(self):
+#        """Return the last five published station."""
+#         return Stations.objects.order_by('-station_created')[:10]
 
 def stations(request, fields_id_field):
     print('tata')
