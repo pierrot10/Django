@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-from .models import Fields, Stations
+from .models import Fields, Stations, Sensors
 
 
 class IndexView(generic.ListView):
@@ -30,21 +30,17 @@ class StationsView(generic.ListView):
         return Stations.objects.order_by('-station_created')[:10]
 
 def stations(request, fields_id_field):
-    #template = loader.get_template('console/stations.html')
-    #try:
+    print('tata')
     #stations_list = get_object_or_404(Stations, pk=field_id_field)
     stations_list = Stations.objects.filter(fields_id_field=fields_id_field, station_active=1)
-
-    #except(KeyError, Stations.DoesNotExist):
-    #    return render(request, 'console/stations.html', {'stations_list': '1'})
-    #response = "You're looking at the results of question %s."
-    #return HttpResponse(response % fields_id_field)
-
-    #try:
     return render(request, 'console/stations.html', {'stations_list':stations_list})
-    #except(KeyError, Stations.DoesNotExist):
-    #    return render(request, 'console/stations.html', {'stations_list':'1'})
 
-class StationView(generic.ListView):
-    model = Stations
-    template_name = 'console/stations.html'
+def sensors(request, idstation):
+    print(idstation)
+    #station = search_object_or_404(Sensors, stations_id_station=idstation)
+    station = Sensors.objets.filter(stations_id_station=idstation)
+    return render(request, 'console/sensors.html', {'station':station,'error':'Erro appened'})
+
+#class StationView(generic.DetailView):
+#    model = Stations
+#    template_name = 'console/station.html'

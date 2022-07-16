@@ -10,16 +10,18 @@
 </head>
 <body>
 
-  <h1>Station for field </h1>
-  {% if stations_list %}
+  <h1>Station </h1>
+  {% if station %}
       <ul>
-      {% for station in stations_list %}
-          <li><a href="{% url 'console:sensors' station.id_station %}">{{ station.station_name}} ({{ station.station_longname }}; Field: {{ station.fields_id_field.field_name }})</a>
-          </li>
-      {% endfor %}
+
+          <li>{{ station.station_name}}</li>
+          <li>{{ station.station_longname }} </li>
+          <li>{{ station.stations_types_id_stations_type}} </li>
+          <li>{{ station.fields_id_field.field_name}} </li>
+
       </ul>
   {% else %}
-      <p>No stations are available or actived.</p>
+      <p>{{ error }}.</p>
   {% endif %}
 
 </body>
