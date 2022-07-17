@@ -11,6 +11,7 @@
 <body>
   <h1>Sensors by Station</h1>
   {% if station %}
+    <ul>
       {% for st in station %}
           <li>
             {{ st.id_sensor}} | {{ st.stations_id_station.station_longname }} | {{ st.sensor_types_id_sensor_type.sensor_type_longname }} | {{ st.chart_style_id_chart_style.chart_style_name }} | {{ st.sensor_active }} | {{ st.sensor_created }} | {{ st.chart_backgroundcolor_id_chart_backgroundcolor.colors_id_colors.color_name }}
