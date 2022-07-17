@@ -18,12 +18,11 @@
             <a href="{% url 'console:sensors' station.id_station %}">{{ station.id_station }}{{ station.station_name}} ({{ station.station_longname }}; Field: {{ station.fields_id_field.field_name }})</a>
             <ul>
               {% for se in sensors %}
-
-              {% if se.stations_id_station.id_station == station.id_station %}
-              <li>
-                {{ se.sensor_longname }}
-              </li>
-              {% endif %}
+                {% if se.stations_id_station.id_station == station.id_station %}
+                <li>
+                  {{ se.sensor_longname }}
+                </li>
+                {% endif %}
               {% endfor%}
             </ul>
           </li>
