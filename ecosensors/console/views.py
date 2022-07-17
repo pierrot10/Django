@@ -38,9 +38,8 @@ def stations(request, fields_id_field):
 def sensors(request, idstation):
     print(idstation)
     #station = search_object_or_404(Sensors, stations_id_station=idstation)
-    station = Sensors.objets.filter(stations_id_station=idstation, sensor_active=1)
-    print('Station:' + station)
-    return render(request, 'console/sensors.html', {'station':station,'error':'Erro appened'})
+    station = Sensors.objects.filter(stations_id_station=idstation)
+    return render(request, 'console/sensors.html', {'station':station})
 
 #class StationView(generic.DetailView):
 #    model = Stations

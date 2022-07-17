@@ -9,19 +9,16 @@
 
 </head>
 <body>
-
-  <h1>Station </h1>
+  <h1>Sensors by Station</h1>
   {% if station %}
-      <ul>
-
-          <li>{{ station.station_name}}</li>
-          <li>{{ station.station_longname }} </li>
-          <li>{{ station.stations_types_id_stations_type}} </li>
-          <li>{{ station.fields_id_field.field_name}} </li>
-
+      {% for st in station %}
+          <li>
+            {{ st.id_sensor}} | {{ st.stations_id_station.station_longname }} | {{ st.sensor_types_id_sensor_type.sensor_type_name }} | {{ st.chart_style_id_chart_style.chart_style_name }}
+          </li>
+      {% endfor %}
       </ul>
   {% else %}
-      <p>{{ error }}.</p>
+      <p>No stations are available or actived.</p>
   {% endif %}
 
 </body>
