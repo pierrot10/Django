@@ -7,7 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class ChartBackgroundcolor(models.Model):
     id_chart_backgroundcolor = models.AutoField(db_column='id_chart_backgroundColor', primary_key=True)  # Field name made lowercase.
     colors_id_colors = models.ForeignKey('Colors', models.DO_NOTHING, db_column='colors_id_colors')

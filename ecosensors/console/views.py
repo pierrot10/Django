@@ -30,15 +30,13 @@ class IndexView(generic.ListView):
 #         return Stations.objects.order_by('-station_created')[:10]
 
 def stations(request, fields_id_field):
-    print('tata')
     #stations_list = get_object_or_404(Stations, pk=field_id_field)
     stations_list = Stations.objects.filter(fields_id_field=fields_id_field, station_active=1)
     return render(request, 'console/stations.html', {'stations_list':stations_list})
 
 def sensors(request, idstation):
-    print(idstation)
     #station = search_object_or_404(Sensors, stations_id_station=idstation)
-    station = Sensors.objects.filter(stations_id_station=idstation)
+    station = Sensors.objects.filter(stations_id_station=idstation, sensor_active=1)
     return render(request, 'console/sensors.html', {'station':station})
 
 #class StationView(generic.DetailView):
