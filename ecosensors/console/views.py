@@ -32,7 +32,9 @@ class IndexView(generic.ListView):
 def stations(request, fields_id_field):
     #stations_list = get_object_or_404(Stations, pk=field_id_field)
     stations_list = Stations.objects.filter(fields_id_field=fields_id_field, station_active=1)
-    return render(request, 'console/stations.html', {'stations_list':stations_list})
+    print(stations_list)
+    sensors = Sensors.objects.filter(sensor_active=1)
+    return render(request, 'console/stations.html', {'stations_list':stations_list, 'sensors':sensors })
 
 def sensors(request, idstation):
     #station = search_object_or_404(Sensors, stations_id_station=idstation)
